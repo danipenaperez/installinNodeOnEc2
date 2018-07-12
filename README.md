@@ -1,25 +1,25 @@
 # installinNodeOnEc2
 Install Node on Ec2
 
-    Enter ssh o remote machine
-    Change to ec2-user → sudo su ec2-user
-    Download distributtion
+Enter ssh o remote machine
+Change to ec2-user → sudo su ec2-user
+Download distributtion
 ```
         cd /tmp
         wget https://nodejs.org/dist/v7.9.0/node-v7.9.0-linux-x64.tar.gz
 ```
-    Create a folder to extract distributtion
+Create a folder to extract distributtion
 ```
         sudo mkdir /usr/local/node  (executed from /tmp )
         sudo tar --strip-components 1 -xzvf node-v* -C /usr/local/node  (executed from /tmp )
 ```
-    Check installation
+Check installation
 ```
         usr/local/node/bin/node --version   → will print the version
 ```
 	
-	Now if you want to manage you node process by supervisor
-    Create the process to be managed by supervisor (example mynode service)
+Now if you want to manage you node process by supervisor
+Create the process to be managed by supervisor (example mynode service)
 ```
         cd /etc/supervisor/conf.d
         sudo touch mynode.conf
@@ -35,11 +35,11 @@ Install Node on Ec2
             user=ec2-user
             #environment=SECRET_PASSPHRASE='this is secret',SECRET_TWO='another secret'
 ```
-    Restart supervisor
+Restart supervisor
 ```
         sudo service supervisord restart
 ```
-    Check that the processs is running
+Check that the processs is running
 ```
         sudo /usr/local/bin/supervisorctl status
 
